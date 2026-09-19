@@ -1,0 +1,509 @@
+/* ==========================================================================
+   MALCOLM MEJIN — LANDING PAGE STYLES
+   ==========================================================================
+   Table of contents:
+   1. Font definitions   (swap fonts here)
+   2. Color & spacing tokens
+   3. Base / resets
+   4. Buttons
+   5. Header / nav
+   6. Hero
+   7. Shared section styles
+   8. Section 2 — Really Rich, Really Robin
+   9. Section 3 — Beautiful Boxset
+   10. Section 4 — I'm Sorry I Love You
+   11. Section 5 — Previous Works
+   12. Section 6 — School Visits
+   13. Footer
+   14. Responsive tweaks
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. FONT DEFINITIONS
+   Gilroy is loaded locally from the /fonts folder via @font-face below (no
+   400/Regular weight was supplied, so body text is set at 600 by default —
+   see the "body" rule below). The handwritten "script-text" accent still
+   uses Caveat from Google Fonts, since Gilroy has no cursive/handwritten
+   style. To swap fonts again: add new @font-face rules (or a Google Fonts
+   <link> in index.html) and update the three variables below to match.
+   -------------------------------------------------------------------------- */
+@font-face {
+  font-family: 'Gilroy';
+  src: url('fonts/Gilroy-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gilroy';
+  src: url('fonts/Gilroy-SemiBoldItalic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gilroy';
+  src: url('fonts/Gilroy-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gilroy';
+  src: url('fonts/Gilroy-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gilroy';
+  src: url('fonts/Gilroy-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gilroy';
+  src: url('fonts/Gilroy-HeavyItalic.ttf') format('truetype');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --font-heading: 'Gilroy', 'Segoe UI', sans-serif;  /* big headings + logo */
+  --font-body:    'Gilroy', 'Segoe UI', sans-serif;  /* paragraphs, nav, buttons */
+  --font-accent:  'Caveat', cursive;                 /* handwritten-style accents */
+}
+
+
+/* --------------------------------------------------------------------------
+   2. COLOR & SPACING TOKENS
+   -------------------------------------------------------------------------- */
+:root {
+  --color-header-footer-bg: #028A48; /* header + footer background */
+  --color-hero-bg: #35A16D;          /* hero (first section) background */
+
+  --color-green-900: #163D2C;   /* headings, buttons, quote text on light sections */
+  --color-green-700: #2F6B3A;   /* mid green accents */
+  --color-green-100: #E7F0E1;   /* previous-works section background */
+
+  --color-yellow-500: #F5C94E;  /* primary CTA fill */
+  --color-yellow-600: #E8B93A;  /* CTA hover */
+  --color-yellow-100: #FBEFC0;  /* boxset section background */
+
+  --color-cream-50:  #FBF8EC;   /* light section backgrounds */
+  --color-cream-100: #F6F3E7;
+
+  --color-text-dark: #1B3A2C;   /* body copy on light backgrounds */
+  --color-white: #FFFFFF;
+
+  --radius-pill: 999px;
+  --radius-md: 14px;
+  --section-space-y: 5.5rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   3. BASE / RESETS
+   -------------------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 600; /* no 400/Regular Gilroy weight was supplied — SemiBold is the lightest available */
+  color: var(--color-text-dark);
+  background-color: var(--color-white);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+h2 {
+  font-size: clamp(1.9rem, 1.5rem + 1.6vw, 2.75rem);
+  color: var(--color-green-900);
+  margin-bottom: 1.25rem;
+}
+
+p {
+  line-height: 1.7;
+}
+
+.script-text {
+  font-family: var(--font-accent);
+  font-size: clamp(1.35rem, 1.15rem + 0.8vw, 1.9rem);
+  line-height: 1.25;
+  color: var(--color-green-900);
+  font-weight: 600;
+}
+
+.lead-text {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--color-green-900);
+  margin-bottom: 0.5rem;
+}
+
+.eyebrow-label {
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  color: var(--color-green-700);
+  margin-bottom: 0.5rem;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--color-yellow-500);
+  color: var(--color-green-900);
+  padding: 0.6rem 1rem;
+  z-index: 2000;
+  border-radius: 0 0 8px 0;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--color-yellow-500);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+
+/* --------------------------------------------------------------------------
+   4. BUTTONS
+   -------------------------------------------------------------------------- */
+.btn-cta,
+.btn-outline-cta,
+.btn-cta-dark {
+  font-family: var(--font-body);
+  font-weight: 800;
+  padding: 0.7rem 1.6rem;
+  border-radius: var(--radius-pill);
+  border: 2px solid transparent;
+  transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+  display: inline-block;
+}
+.btn-cta:hover,
+.btn-outline-cta:hover,
+.btn-cta-dark:hover {
+  transform: translateY(-2px);
+}
+
+.btn-cta {
+  background-color: var(--color-yellow-500);
+  color: var(--color-green-900);
+}
+.btn-cta:hover {
+  background-color: var(--color-yellow-600);
+  color: var(--color-green-900);
+}
+
+.btn-outline-cta {
+  background-color: transparent;
+  color: var(--color-green-900);
+  border-color: var(--color-green-900);
+}
+.btn-outline-cta:hover {
+  background-color: var(--color-green-900);
+  color: var(--color-white);
+}
+
+.btn-cta-dark {
+  background-color: var(--color-green-900);
+  color: var(--color-white);
+}
+.btn-cta-dark:hover {
+  background-color: var(--color-green-700);
+  color: var(--color-white);
+}
+
+.btn-header-cta {
+  padding: 0.55rem 1.4rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   5. HEADER / NAV
+   -------------------------------------------------------------------------- */
+.site-header {
+  background-color: var(--color-header-footer-bg);
+  padding: 0.9rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: box-shadow 0.2s ease;
+}
+.site-header.scrolled {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.navbar-brand {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--color-white) !important;
+  letter-spacing: 0.03em;
+}
+.brand-star {
+  color: var(--color-yellow-500);
+  font-size: 1rem;
+  vertical-align: super;
+}
+
+.navbar-nav .nav-link {
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.85) !important;
+  padding: 0.5rem 1rem;
+}
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: var(--color-yellow-500) !important;
+}
+
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+.navbar-toggler-icon {
+  filter: invert(1);
+}
+
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background-color: var(--color-header-footer-bg);
+    padding: 1rem 0.5rem 1.5rem;
+    border-radius: var(--radius-md);
+    margin-top: 0.75rem;
+  }
+  .btn-header-cta {
+    margin-top: 0.75rem;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   6. HERO
+   -------------------------------------------------------------------------- */
+.hero {
+  background-color: var(--color-hero-bg);
+  color: var(--color-white);
+  padding: 4.5rem 0 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-eyebrow {
+  color: var(--color-yellow-500);
+  margin-bottom: 0.5rem;
+}
+
+.hero-text h1 {
+  color: var(--color-white);
+  font-size: clamp(2.75rem, 2rem + 3vw, 4.5rem);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.hero-sub {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 44ch;
+  margin-bottom: 2rem;
+}
+
+.hero-illustration-wrap {
+  text-align: center;
+}
+
+.hero-illustration {
+  border-radius: var(--radius-md);
+  max-height: 480px;
+  width: auto;
+  max-width: 100%;
+}
+
+
+/* --------------------------------------------------------------------------
+   7. SHARED SECTION STYLES
+   -------------------------------------------------------------------------- */
+.section-block {
+  padding: var(--section-space-y) 0;
+}
+
+.book-cover,
+.boxset-image {
+  width: 100%;
+  height: auto;
+}
+
+.book-cover-large {
+  width: 80%;
+  height: auto;
+}
+
+.school-visit-image {
+  border-radius: var(--radius-md);
+  box-shadow: 0 12px 24px rgba(22, 61, 44, 0.15);
+  width: 100%;
+  height: auto;
+}
+
+.book-cover-wide {
+  /* border-radius: var(--radius-md);
+  box-shadow: 0 12px 24px rgba(22, 61, 44, 0.15); */
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+/* --------------------------------------------------------------------------
+   8. SECTION 2 — REALLY RICH, REALLY ROBIN
+   -------------------------------------------------------------------------- */
+.section-robin {
+  background-color: var(--color-cream-50);
+}
+
+
+/* --------------------------------------------------------------------------
+   9. SECTION 3 — BEAUTIFUL BOXSET
+   -------------------------------------------------------------------------- */
+.section-boxset {
+  background-color: var(--color-yellow-100);
+}
+
+
+/* --------------------------------------------------------------------------
+   10. SECTION 4 — I'M SORRY I LOVE YOU
+   -------------------------------------------------------------------------- */
+.section-yanovel {
+  background-color: var(--color-cream-100);
+}
+
+
+/* --------------------------------------------------------------------------
+   11. SECTION 5 — PREVIOUS WORKS
+   -------------------------------------------------------------------------- */
+.section-previous {
+  background-color: var(--color-green-100);
+}
+.section-previous .book-cover-wide {
+  margin: 2rem 0 2.5rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   12. SECTION 6 — SCHOOL VISITS
+   -------------------------------------------------------------------------- */
+.section-schoolvisits {
+  background-color: var(--color-cream-50);
+}
+.quote-block {
+  border-left: 3px solid var(--color-yellow-500);
+  padding-left: 1.1rem;
+  margin: 0;
+}
+.quote-block footer {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-dark);
+  margin-top: 0.5rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   13. FOOTER
+   -------------------------------------------------------------------------- */
+.site-footer {
+  background-color: var(--color-header-footer-bg);
+  color: var(--color-white);
+  padding: 3rem 0;
+}
+.footer-brand {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.4rem;
+  margin-bottom: 0.25rem;
+}
+.footer-tagline {
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 0;
+}
+.footer-links a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.footer-links a:hover {
+  color: var(--color-yellow-500);
+}
+.social-icons a {
+  color: var(--color-white);
+  font-size: 1.25rem;
+  margin-left: 1rem;
+  display: inline-block;
+}
+.social-icons a:first-child {
+  margin-left: 0;
+}
+.social-icons a:hover {
+  color: var(--color-yellow-500);
+}
+
+@media (max-width: 767.98px) {
+  .social-icons {
+    margin-top: 0.5rem;
+  }
+  .social-icons a:first-child {
+    margin-left: 0;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   14. RESPONSIVE TWEAKS
+   -------------------------------------------------------------------------- */
+@media (max-width: 575.98px) {
+  :root {
+    --section-space-y: 3.5rem;
+  }
+  .hero {
+    padding: 3rem 0 3.5rem;
+    text-align: center;
+  }
+  .hero-sub {
+    max-width: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .script-text {
+    font-size: 1.5rem;
+  }
+}
