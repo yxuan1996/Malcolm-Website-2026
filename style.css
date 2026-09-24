@@ -486,6 +486,87 @@ button:focus-visible {
   }
 }
 
+/* --------------------------------------------------------------------------
+   14. SUB-PAGE COMPONENTS
+   Used by really-rich-really-robin.html and im-sorry-i-love-you.html —
+   a small banner at the top of the page, repeating image + text "feature"
+   rows for each book, and a closing call-to-action band.
+   -------------------------------------------------------------------------- */
+.page-banner {
+  background-color: var(--color-hero-bg);
+  color: var(--color-white);
+  padding: 3rem 0 3.5rem;
+}
+.page-banner h1 {
+  color: var(--color-white);
+  font-size: clamp(2.25rem, 1.8rem + 2vw, 3.5rem);
+  margin-bottom: 0.5rem;
+}
+.page-banner .lead-text {
+  color: var(--color-yellow-500);
+}
+.page-banner-sub {
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 50ch;
+  margin-bottom: 0;
+}
+.page-banner .eyebrow-label {
+  color: var(--color-yellow-500);
+}
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 1.25rem;
+}
+.back-link:hover {
+  color: var(--color-yellow-500);
+}
+ 
+.book-feature {
+  padding: var(--section-space-y) 0;
+}
+.book-feature h2 {
+  margin-bottom: 1rem;
+}
+.book-feature p {
+  max-width: 60ch;
+}
+ 
+.diary-copy {
+  max-width: 68ch;
+  margin: 0 auto;
+  text-align: center;
+}
+.diary-copy p {
+  max-width: none;
+}
+.diary-closing-line {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--color-green-900);
+  margin-top: 2rem;
+}
+ 
+.bg-cream-50   { background-color: var(--color-cream-50); }
+.bg-cream-100  { background-color: var(--color-cream-100); }
+.bg-yellow-100 { background-color: var(--color-yellow-100); }
+.bg-green-100  { background-color: var(--color-green-100); }
+ 
+.page-cta {
+  padding: 4rem 0;
+  text-align: center;
+}
+.page-cta p {
+  max-width: 50ch;
+  margin: 0 auto 1.5rem;
+}
+
 
 /* --------------------------------------------------------------------------
    14. RESPONSIVE TWEAKS
